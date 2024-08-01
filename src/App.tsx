@@ -1,11 +1,23 @@
-import "./App.css";
+import { useState } from "react";
+import { SearchResultList } from "./components/Search/SearchResultList";
 
-function App() {
+const App = () => {
+  const [keyword, setKeyword] = useState<string>("");
+
   return (
-    <>
-      <div>hi</div>
-    </>
+    <form>
+      <div>
+        <input
+          value={keyword}
+          onChange={(e) => {
+            setKeyword(e.target.value);
+          }}
+        />
+        {keyword && <SearchResultList keyword={keyword} />}
+      </div>
+      <button type="submit">🔍</button>
+    </form>
   );
-}
+};
 
 export default App;
